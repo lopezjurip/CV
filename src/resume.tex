@@ -1,6 +1,6 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
-% Awesome CV LaTeX Template
+% Awesome CV LaTeX Template for CV/Resume
 %
 % This template has been downloaded from:
 % https://github.com/posquit0/Awesome-CV
@@ -14,81 +14,95 @@
 %
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Configuration
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Themes: Awesome-CV
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[11pt, a4paper]{awesome-cv}
 
-%%% Override a directory location for fonts(default: 'fonts/')
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Specify the location of the included fonts
 \fontdir[fonts/]
 
-%%% Configure a directory location for sections
-\newcommand*{\sectiondir}{resume/}
-
-%%% Override color
+% Color for highlights
 % Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
 %                 awesome-nephritis, awesome-concrete, awesome-darknight
-%% Color for highlight
-% Define your custom color if you don't like awesome colors
-\colorlet{awesome}{awesome-skyblue}
-%\definecolor{awesome}{HTML}{CA63A8}
-%% Colors for text
-%\definecolor{darktext}{HTML}{414141}
-%\definecolor{text}{HTML}{414141}
-%\definecolor{graytext}{HTML}{414141}
-%\definecolor{lighttext}{HTML}{414141}
+\colorlet{awesome}{awesome-red}
+% Uncomment if you would like to specify your own color
+% \definecolor{awesome}{HTML}{CA63A8}
 
-%%% Override a separator for social informations in header(default: ' | ')
-\headersocialsep[\quad\quad]
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
 
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     3rd party packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Needed to divide into several files
-\usepackage{import}
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
+\makeatletter
+\patchcmd{\@sectioncolor}{\color}{\mdseries\color}{}{}
+\makeatother
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Personal Data
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Essentials
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+% \photo[rectangle,edge,right]{profile}
 \name{Patricio}{López Juri}
-\address{Av. Portugal, Santiago, Chile}
-\mobile{(+56) 9 9051 1003} 
-%%% Social
+\position{Software Engineer{\enskip\cdotp\enskip}Full-Stack Developer{\enskip\cdotp\enskip}Blockchain expert}
+\address{Santiago, Chile}
+
+\mobile{(+56) 990511003}
 \email{patricio@lopezjuri.com}
-\homepage{lopezjuri.com}
-\github{mrpatiwi}
-\twitter{mrpatiwi}
+\homepage{https://lopezjuri.com}
+\github{lopezjurip}
 \linkedin{lopezjuri}
-%%% Optionals
-\position{Software Engineer{\enskip\cdotp\enskip}Full-stack developer{\enskip\cdotp\enskip}Product Manager{\enskip\cdotp\enskip}IT Consultant}
-\quote{``A man whose fear is greater than his desire, or a man who has no great, all-consuming passion, or one who has patience and does not oppose, cannot be a main character."}
+% \gitlab{gitlab-id}
+\stackoverflow{3416691}{lopezjurip}
+\twitter{@lopezjurip}
+% \skype{skype-id}
+% \reddit{reddit-id}
+% \extrainfo{extra informations}
+
+% \quote{``Computer programs should be understood as a medium and not as an end."}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Content
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Make a footer for CV with three arguments(<left>, <center>, <right>)
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[L]
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
 \makecvfooter
   {\today}
   {lopezjuri.com}
   {\thepage}
 
-\begin{document}
-%%% Make a header for CV with personal data
-\makecvheader
 
-%%% Import contents
-\import{\sectiondir}{education.tex}
-\import{\sectiondir}{experience.tex}
-\import{\sectiondir}{extracurricular.tex}
-\import{\sectiondir}{honors.tex}
-\import{\sectiondir}{presentation.tex}
-\import{\sectiondir}{writing.tex}
-\import{\sectiondir}{committees.tex}
-\import{\sectiondir}{other.tex}
+%-------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%-------------------------------------------------------------------------------
+\input{resume/summary.tex}
+\input{resume/experience.tex}
+\input{resume/honors.tex}
+\input{resume/presentation.tex}
+\input{resume/writing.tex}
+% \input{resume/committees.tex}
+\input{resume/education.tex}
+\input{resume/extracurricular.tex}
 
+
+%-------------------------------------------------------------------------------
 \end{document}
